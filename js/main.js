@@ -167,71 +167,31 @@ const  items = [{
 let firstProduct
 let secondProduct
 let discountedPrice
+let soldItems
+
 
 // First Prompt
-firstProduct = prompt("Ingresa el nombre del artículo que deseas:");
-// Look for item in object
-firstProduct = items.find(object => object.name == firstProduct);
-console.log(firstProduct.name + " agregado.")
-// Remove one item from stock
-firstProduct.quantity = firstProduct.quantity -1;
-console.log(firstProduct.quantity + " en Stock.");
-// Check for offer availability
-if (firstProduct.offer) {
-    discountedPrice = firstProduct.price * .20;
-    firstProduct.price = firstProduct.price - discountedPrice;
-    console.log("Tienes un descuento del 20% en este producto!")
-}
+debugger
 
-// Second Prompt
-secondProduct = prompt("Puede agregar otro artículo o escribir 'pagar' si ha finalizado.");
-if (secondProduct != "pagar"){
-    // Look for item in object
-    secondProduct = items.find(object => object.name == secondProduct);
-    // Remove one item from stock
-    secondProduct.quantity = secondProduct.quantity - 1;
-    console.log(secondProduct.name + " agregado")
-    console.log(secondProduct.quantity + " en Stock.")
-} 
+firstProduct = prompt("Selecciona un artículo.")
+for (let item of items) {
+    
+    while (firstProduct === item.name && item.inStock) {
+        console.log(item.name);
+        console.log(item.quantity --);
+        console.log(item.price);
+        secondProduct = prompt("Selecciona otro artículo o escribe 'pagar' para finalizar.")
+        if (secondProduct === "pagar") {
+        break;
+        }
 
-// While Condition
-while (secondProduct != "pagar") {
-    // Check for offer
-    if (secondProduct.offer) {
-    discountedPrice = secondProduct.price * .20;
-    secondProduct.price = secondProduct.price - discountedPrice;
-    console.log("Tienes un descuento del 20% en este producto!")
-}
-    // Price addition - Amount moved to first product.
-    firstProduct.price = firstProduct.price + secondProduct.price
-    secondProduct = prompt("Puede agregar otro artículo o escribir 'pagar' si ha finalizado.");
-    // if 'pagar' break and move to total amount.
-    if (secondProduct == "pagar") {
-        break
+        
+        firstProduct = secondProduct;
+    
     }
-    // Look for item in object
-    secondProduct = items.find(object => object.name == secondProduct);
-    console.log(secondProduct.name + " agregado")
-    // Remove item from stock
-    secondProduct.quantity = secondProduct.quantity - 1;
-    // Condition if 0 stock.
-    if (secondProduct.quantity == 0) {
-        console.log(secondProduct.name + " no está en existencia. Puede agregar otro artículo o escribir 'pagar' si ha finalizado.")
-    } else {
-        console.log(secondProduct.quantity + " en Stock.")
-    }
-    
-    
-    
-    
-    
-} 
-// Print total amount
-console.log("Su total es: $" + firstProduct.price + " dólares.");
 
-
-
-
+    
+}
 
 
 
