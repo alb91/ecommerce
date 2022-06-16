@@ -103,7 +103,7 @@ const  items = [{
 },
 
 {
-    name: "Mac",
+    name: "mac",
     idNumber: 9,
     inStock: true,
     quantity: 5,
@@ -114,7 +114,7 @@ const  items = [{
 
 // Best Rated Items
 {
-    name: "Huawei phone",
+    name: "huawei phone",
     idNumber: 10,
     inStock: true,
     quantity: 5,
@@ -134,7 +134,7 @@ const  items = [{
 },
 
 {
-    name: "Ipad Air",
+    name: "ipad Air",
     idNumber: 12,
     inStock: true,
     quantity: 5,
@@ -163,6 +163,9 @@ const  items = [{
 
 }];
 
+//
+const TAX = 1.16;
+const DISCOUNT = .20;
 // Variables
 let firstProduct
 let secondProduct
@@ -170,28 +173,41 @@ let discountedPrice
 let soldItems
 
 
-// First Prompt
-debugger
+// Calcular precio de artículos, agregar impuesto y checar si el artículo tiene descuento.
 
-firstProduct = prompt("Selecciona un artículo.")
-for (let item of items) {
-    
-    while (firstProduct === item.name && item.inStock) {
-        console.log(item.name);
-        console.log(item.quantity --);
-        console.log(item.price);
-        secondProduct = prompt("Selecciona otro artículo o escribe 'pagar' para finalizar.")
-        if (secondProduct === "pagar") {
-        break;
+let total = 0;
+do {
+    firstProduct = prompt("Selecciona un artículo o escribe 'pagar' para finalizar.").toLocaleLowerCase(); 
+    for (let item of items) {
+        if (firstProduct === item.name) {
+            //Descuento
+            if (item.offer == true) {
+            discountedPrice = item.price * DISCOUNT
+            item.price = item.price - discountedPrice;
         }
-
+        let itemTotal = item.price * TAX;
+        total = total + itemTotal;
+        };
         
-        firstProduct = secondProduct;
-    
+
+};
+} while (firstProduct !== "pagar");
+console.log(total.toFixed(2) + " dólares.");
+
+
+// Búsqueda de artículo. 
+
+function searchItem() {
+
+    let aSearch = prompt("Ingrese el artículo que desea buscar:").toLowerCase();
+    let result = items.find((item) => item.name.includes(aSearch));
+    if (result !== undefined) {
+    console.log(result.name);
+    } else {
+        console.log("Artículo no disponible.")
     }
-
-    
 }
+searchItem();
 
-
+// Add items and amounts. 
 
