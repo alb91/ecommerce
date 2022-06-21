@@ -163,7 +163,7 @@ const  items = [{
 
 }];
 
-//
+// Constants
 const TAX = 1.16;
 const DISCOUNT = .20;
 // Variables
@@ -173,7 +173,37 @@ let discountedPrice
 let soldItems
 
 
-// Calcular precio de artículos, agregar impuesto y checar si el artículo tiene descuento.
+
+// Creación de Tabla
+
+const title = document.getElementsByClassName("title");
+const owlContainer = document.getElementsByClassName("owl-container");
+const owlCarousel = document.getElementsByClassName("owl-carousel");
+
+
+const table = document.createElement("table");
+function loadItems() {
+    owlCarousel.innerHTML = "";
+    for (const item of items) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+
+        tr.append(item.name);
+        td.append(item.idNumber, item.inStock, item.quantity, item.price);
+        table.append(tr);
+        table.append(td);
+        
+
+        
+
+    }
+
+}
+
+loadItems();
+
+
+//Calcular precio de artículos, agregar impuesto y checar si el artículo tiene descuento.
 
 let total = 0;
 do {
@@ -184,13 +214,13 @@ do {
             if (item.offer == true) {
             discountedPrice = item.price * DISCOUNT
             item.price = item.price - discountedPrice;
-        }
+            }
         let itemTotal = item.price * TAX;
         total = total + itemTotal;
         };
         
 
-};
+    };
 } while (firstProduct !== "pagar");
 console.log(total.toFixed(2) + " dólares.");
 
@@ -209,5 +239,5 @@ function searchItem() {
 }
 searchItem();
 
-// Add items and amounts. 
+
 
