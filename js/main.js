@@ -21,200 +21,51 @@ $('.owl-carousel').owlCarousel({
     }
 })
 
-// Objects - Items
 
-// Most Popular Items
-const  items = [{
-    name: "iphone",
-    idNumber: 0,
-    inStock: true,
-    quantity: 5,
-    price: 499.00,
-    offer: false
 
-},
-{
-    name: "sgn20",
-    idNumber: 1,
-    inStock: true,
-    quantity: 5,
-    price: 399.00,
-    offer: false
+// // Array Items
+// // const arrayItems = ["iphone", "sgn20", "macbookpro", "sony headphones", "remote control", "nintento switch", "keyboard", "logitech mouse", "mac", "huawei phone", "iphone 7", "ipad Air", "gameboy", "play station 1"];
+// // const addedItems = [];
+// // DOM 
+// // Enlistar artículos.
+// const itemList = document.getElementById("itemList");
+// const cartItems = document.getElementById("cartItems");
 
-},
-{
-    name: "macbookpro",
-    idNumber: 2,
-    inStock: true,
-    quantity: 5,
-    price: 1299.00,
-    offer: false
+// function loadItems() {
+//     itemList.innerHTML = "";
+//     for (const arrayItem of arrayItems) {
+//         const li = document.createElement("li");
+//         li.innerText = arrayItem;
+//         li.id = arrayItem + "Prod";
+//         li.addEventListener("click", ()=> { addItemCart(`${li.innerText}`)});
+//         itemList.append(li);
 
-},
-{
-    name: "sony headphones",
-    idNumber: 3,
-    inStock: true,
-    quantity: 5,
-    price: 199.00,
-    offer: false
+//     }
 
-},
+// };
 
-// Offers
-{
-    name: "remote control",
-    idNumber: 5,
-    inStock: true,
-    quantity: 5,
-    price: 59.00,
-    offer: true
+// loadItems();
+// // Agregar al carrito.
+// function addItemCart(prod) {
+//     if (prod.trim() !== "") {
+//         addedItems.push(prod)
+//         const liNewItem = document.createElement("li");
+//         liNewItem.innerText = prod;
+//         liNewItem.addEventListener("dblclick", ()=> {removeFromCart(`${liNewItem.id}`)});
+//         cartItems.append(liNewItem);
+//     }
 
-},
+// };
 
-{
-    name: "nintento switch",
-    idNumber: 6,
-    inStock: true,
-    quantity: 5,
-    price: 299.00,
-    offer: true
+// addItemCart();
+// // Remover del carrito. 
+// function removeFromCart(prod) {
+//     const removeItem = document.getElementById(`${prod}`);
+//     removeItem.remove();
+//     console.warn(`${prod} ha sido removido del carrito` );
+// }
 
-},
-
-{
-    name: "keyboard",
-    idNumber: 7,
-    inStock: true,
-    quantity: 5,
-    price: 89.00,
-    offer: true
-
-},
-
-{
-    name: "logitech mouse",
-    idNumber: 8,
-    inStock: true,
-    quantity: 5,
-    price: 149.00,
-    offer: true
-
-},
-
-{
-    name: "mac",
-    idNumber: 9,
-    inStock: true,
-    quantity: 5,
-    price: 1699.00,
-    offer: true
-
-},
-
-// Best Rated Items
-{
-    name: "huawei phone",
-    idNumber: 10,
-    inStock: true,
-    quantity: 5,
-    price: 799.00,
-    offer: false
-
-},
-
-{
-    name: "iphone 7",
-    idNumber: 11,
-    inStock: true,
-    quantity: 5,
-    price: 649.00,
-    offer: false
-
-},
-
-{
-    name: "ipad Air",
-    idNumber: 12,
-    inStock: true,
-    quantity: 5,
-    price: 729.00,
-    offer: false
-
-},
-
-{
-    name: "gameboy",
-    idNumber: 13,
-    inStock: true,
-    quantity: 5,
-    price: 49.00,
-    offer: false
-
-},
-
-{
-    name: "play station 1",
-    idNumber: 14,
-    inStock: true,
-    quantity: 5,
-    price: 299.00,
-    offer: false
-
-}];
-
-// Constants
-const TAX = 1.16;
-const DISCOUNT = .20;
-// Variables
-let firstProduct
-let secondProduct
-let discountedPrice
-let soldItems
-
-// Array Items
-const arrayItems = ["iphone", "sgn20", "macbookpro", "sony headphones", "remote control", "nintento switch", "keyboard", "logitech mouse", "mac", "huawei phone", "iphone 7", "ipad Air", "gameboy", "play station 1"];
-const addedItems = [];
-// DOM 
-// Enlistar artículos.
-const itemList = document.getElementById("itemList");
-const cartItems = document.getElementById("cartItems");
-
-function loadItems() {
-    itemList.innerHTML = "";
-    for (const arrayItem of arrayItems) {
-        const li = document.createElement("li");
-        li.innerText = arrayItem;
-        li.id = arrayItem + "Prod";
-        li.addEventListener("click", ()=> { addItemCart(`${li.innerText}`)});
-        itemList.append(li);
-
-    }
-
-};
-
-loadItems();
-// Agregar al carrito.
-function addItemCart(prod) {
-    if (prod.trim() !== "") {
-        addedItems.push(prod)
-        const liNewItem = document.createElement("li");
-        liNewItem.innerText = prod;
-        liNewItem.addEventListener("dblclick", ()=> {removeFromCart(`${liNewItem.id}`)});
-        cartItems.append(liNewItem);
-    }
-
-};
-
-addItemCart();
-// Remover del carrito. 
-function removeFromCart(prod) {
-    const removeItem = document.getElementById(`${prod}`);
-    removeItem.remove();
-    console.warn(`${prod} ha sido removido del carrito` );
-}
-
-removeFromCart();
+// removeFromCart();
 
 
 // Creación de Tabla
